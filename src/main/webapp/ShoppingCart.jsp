@@ -31,12 +31,14 @@
 
       	 			<c:forEach items="${cart.cartItems}" var="cartItem">
                   <tr>
+                  <form action="/cart/update" name="cart_form">
                       <td> ${ cartItem.getTitle() } </td>
                       <td> ${ cartItem.getAuthor() } </td>
                       <td> <fmt:formatNumber value = "${ cartItem.getPrice() }" type = "currency"/>  </td>
-                      <td>${ cartItem.getQuantity() }</td>
+                      <td><input type="number" name="quantity" nim="1" max="50" value="${ cartItem.getQuantity() }"></td>
                       <td> <fmt:formatNumber value = "${ cartItem.getTotalCost() }" type = "currency"/> </td>
-                      <td>Update Delete</td>
+                      <td><input type="submit" value="Update">Update</input><input type="submit" value="Delete" formaction="/cart/delete">Delete</input></td>
+                  </form>
                   </tr>
               </c:forEach>
 	        </table>
